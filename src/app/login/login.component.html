@@ -1,0 +1,77 @@
+
+<div class="container">
+    <div class="login">
+
+        <h1>LOGIN</h1>
+
+        <form (ngSubmit)="onSubmitForm(f)" #f="ngForm">
+            <div class="form-row">
+                <label for="username">Username</label>
+                <input 
+                    type="text" 
+                    id="username" 
+                    name="username" 
+                    value="" 
+                    ngModel 
+                    required 
+                    #name="ngModel"
+                />
+            </div>
+            <span *ngIf="!name.valid && name.touched" class="error-message">Please enter a name!</span>
+            <div class="form-row">
+                <label for="password">Password</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password"  
+                    ngModel 
+                    required 
+                    #password="ngModel"
+                />
+            </div>
+            <span *ngIf="!password.valid && password.touched" class="error-message">Please enter a valid password!</span>
+            <div class="form-row">
+                <button type="submit" [disabled]="!f.valid">Submit</button>
+            </div>
+            <span *ngIf="incorrect_credentials_error" class="error-message">Incorrect credentials!</span>
+        </form>
+
+
+
+      <!-- <form>
+        <div class="form-row">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" value="" [(ngModel)]="userName"/>
+        </div>
+        <div class="form-row">
+            <label for="password">Password</label>
+            <input type="text" id="password" name="password" value="" [(ngModel)]="password">
+        </div>
+        <div class="form-row">
+            <button (click)="onSubmitForm()" type="submit">Submit</button>
+        </div>
+    </form> -->
+
+
+
+      <!-- <form #userForm="ngForm">
+  
+          {{userForm.value | json }}
+          <div class="form-row">
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" value="" ngModel/>
+          </div>
+          <div class="form-row">
+              <label for="password">Password</label>
+              <input type="text" id="password" name="password" value="" ngModel>
+          </div>
+          <div class="form-row">
+              <button type="submit">Submit</button>
+          </div>
+      </form> -->
+  
+      <!-- <router-outlet></router-outlet> -->
+    </div>
+</div>
+  
+  

@@ -1,0 +1,84 @@
+<div class="container">
+      <h2 class="title">CONTACT LIST</h2>
+      <p *ngIf="users.length < 1">No contacts available.</p>
+      <ul class="contact-list" *ngIf="users.length >= 1">
+            <!-- <div class="list-header">
+                  <p>Name</p>
+                  <p>Contact</p>
+                  <p>Action</p>
+            </div> -->
+            <li *ngFor="let user of users; let i = index">
+                  <p>{{ user.name }}</p>
+                  <p>{{ user.contact }}</p>
+                  <button (click)="edit(i)">Edit</button>
+                  <button (click)="deleteContact(i)">Delete</button>
+            </li>
+      </ul>
+
+      <!-- <app-modal [isPopup]="isPopup"> -->
+      <div *ngIf="isPopup" class="modal">
+            <form (ngSubmit)="editContact(e)" #e="ngForm">
+                  <div class="form-row">
+                      <label for="name">Name</label>
+                      <input type="text" id="name" name="name" ngModel required #name="ngModel"/>
+                  </div>
+                  <span *ngIf="!name.valid && name.touched" class="error-message">Please enter a name!</span>
+                  <div class="form-row">
+                      <label for="password">Password</label>
+                      <input type="password" id="password" name="password" ngModel required #password="ngModel">
+                  </div>
+                  <span *ngIf="!password.valid && password.touched" class="error-message">Please enter a password!</span>
+                  <div class="form-row">
+                        <label for="contact">Contact</label>
+                        <input type="number" id="contact" name="contact" ngModel required #contact="ngModel">
+                  </div>
+                  <span *ngIf="!contact.valid && contact.touched" class="error-message">Please enter a contact!</span>
+                  <!-- <span *ngIf="form.value.contact.length !== 10 && contact.touched" class="error-message">Please enter a valid number!</span> -->
+                  <div class="form-row">
+                      <button type="submit" [disabled]="!e.valid">Add contact</button>
+                      <button type="button" (click)="toggleModal()">Cancel</button>
+                  </div>
+            </form>
+      </div>
+      <!-- </app-modal> -->
+
+      <section class="new-user">
+            <form (ngSubmit)="addContact(f)" #f="ngForm">
+                  <div class="form-row">
+                      <label for="name">Name</label>
+                      <input type="text" id="name" name="name" ngModel required #name="ngModel"/>
+                  </div>
+                  <span *ngIf="!name.valid && name.touched" class="error-message">Please enter a name!</span>
+                  <div class="form-row">
+                      <label for="password">Password</label>
+                      <input type="password" id="password" name="password" ngModel required #password="ngModel">
+                  </div>
+                  <span *ngIf="!password.valid && password.touched" class="error-message">Please enter a password!</span>
+                  <div class="form-row">
+                        <label for="contact">Contact</label>
+                        <input type="number" id="contact" name="contact" ngModel required #contact="ngModel">
+                  </div>
+                  <span *ngIf="!contact.valid && contact.touched" class="error-message">Please enter a contact!</span>
+                  <!-- <span *ngIf="form.value.contact.length !== 10 && contact.touched" class="error-message">Please enter a valid number!</span> -->
+                  <div class="form-row">
+                      <button type="submit" [disabled]="!f.valid">Add contact</button>
+                  </div>
+            </form>
+            <!-- <div class="form-row">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" name="name" [(ngModel)]="user.name"/>
+            </div>
+            <div class="form-row">
+                  <label for="password">Password</label>
+                  <input type="text" id="password" name="password" [(ngModel)]="user.password">
+            </div>
+            <div class="form-row">
+                  <label for="contact">Contact</label>
+                  <input type="number" id="contact" name="contact" [(ngModel)]="user.contact">
+            </div>
+            <div class="form-row">
+                  <button (click)="addContact()">Add contact</button>  
+            </div> -->
+      </section>
+</div>
+
